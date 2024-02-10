@@ -3,7 +3,15 @@ from .gift_registry_views import (
     GiftUpdateFormPartial,
     GiftDetailPartial,
     delete_gift_partial,
-)  # UPDATED
+    GiftCreateFormPartial,
+)
+from .guest_list_views import (
+    GuestListPage,
+    mark_attending_partial,
+    mark_not_attending_partial,
+    filter_guests_partial,
+)
+from .general_views import LoginPage  # NEW
 from .new_party_views import (
     page_new_party,
     partial_check_party_date,
@@ -23,5 +31,11 @@ __all__ = [
     "GiftRegistryPage",
     "GiftUpdateFormPartial",
     "GiftDetailPartial",
-    "delete_gift_partial",  # NEW
+    "delete_gift_partial",
+    "GiftCreateFormPartial",
+    "GuestListPage",
+    "mark_attending_partial",
+    "mark_not_attending_partial",
+    "filter_guests_partial",
+    "LoginPage",  # NEW
 ]

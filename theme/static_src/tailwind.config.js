@@ -41,6 +41,9 @@ module.exports = {
          */
         '../../**/*.py'
     ],
+    safelist: [ // NEW
+        'bg-green-800'
+    ],
     theme: {
         fontFamily: {
             sans: ["Roboto"] // setting the default font-family

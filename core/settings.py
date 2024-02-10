@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",  # NEW
+    "allauth",  # NEW
+    "allauth.account",  # NEW
+    "allauth.socialaccount",  # NEW
+    "allauth.socialaccount.providers.google",  # NEW
+    "allauth.socialaccount.providers.facebook",  # NEW
     "tailwind",
     "theme",
     "party",
@@ -56,6 +62,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "django_browser_reload.middleware.BrowserReloadMiddleware",
+    "allauth.account.middleware.AccountMiddleware",  # NEW
 ]
 
 ROOT_URLCONF = "core.urls"
@@ -139,3 +146,16 @@ TAILWIND_APP_NAME = "theme"
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+
+LOGIN_REDIRECT_URL = "page_party_list"  # where to redirect after login
+LOGIN_URL = "party_login"  # where to redirect when login is required to access a view
+
+
+AUTHENTICATION_BACKENDS = ("allauth.account.auth_backends.AuthenticationBackend",)
+
+SITE_ID = 1  # needs to match the Site ID in the admin
+ACCOUNT_EMAIL_VERIFICATION = "none"  # no email verification needed
+SOCIALACCOUNT_LOGIN_ON_GET = True  # skip additional confirm page, less secure
+ACCOUNT_LOGOUT_ON_GET = True  # skip the confirm logout page
+ACCOUNT_UNIQUE_EMAIL = True

@@ -5,9 +5,11 @@ from django.test import Client
 
 from party.models import Party, Gift, Guest
 
+
 @pytest.fixture(scope="function")
 def create_user(django_user_model):
-    return django_user_model.objects.create_user(username="testuser",password="123456")
+    return django_user_model.objects.create_user(username="testuser", password="123456")
+
 
 @pytest.fixture(scope="function")
 def authenticated_client():
@@ -16,6 +18,7 @@ def authenticated_client():
         client.force_login(test_user)
 
         return client
+
     return _authenticated_client
 
 
@@ -39,10 +42,11 @@ def create_gift():
             gift=kwargs.get("gift", "Test gift"),
             price=kwargs.get("price", 12.5),
             link=kwargs.get("link", "https://testlink.com"),
-            party=party
+            party=party,
         )
 
     return _create_gift
+
 
 @pytest.fixture(scope="session")
 def create_guest():
@@ -50,7 +54,7 @@ def create_guest():
         return Guest.objects.create(
             name=kwargs.get("name", "Anna Boleyn"),
             attending=kwargs.get("attending", True),
-            party=party
+            party=party,
         )
 
     return _create_guest
